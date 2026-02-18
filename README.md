@@ -1,4 +1,4 @@
-# A-fatimah-albahry<!DOCTYPE html>
+# A-fatimah-albahry <!DOCTYPE html>
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
@@ -8,9 +8,19 @@
 <style>
 body{
     font-family: Arial;
-    background: linear-gradient(135deg,#ffecd2,#fcb69f);
     text-align:center;
     padding:20px;
+
+    /* خلفية تموج ألوان قوس قزح */
+    background: linear-gradient(-45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8f00ff);
+    background-size: 400% 400%;
+    animation: rainbow 15s ease infinite;
+}
+
+@keyframes rainbow {
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
 }
 
 /* رأس الصفحة */
@@ -75,7 +85,7 @@ button:hover{
 
 .result{
     margin-top:15px;
-    font-size:20px;
+    font-size:18px;
     color:#333;
     font-weight:bold;
 }
@@ -132,14 +142,24 @@ function calculateAge(){
 
     let years=today.getFullYear()-birth.getFullYear();
     let months=today.getMonth()-birth.getMonth();
-
+    if(today.getDate() < birth.getDate()){
+        months--;
+    }
     if(months<0){
         years--;
         months+=12;
     }
 
+    // تحديد الفصل حسب العمر
+    let grade = "";
+    if(years < 3) grade = "غير مناسب للروضة بعد";
+    else if(years == 3) grade = "براعم المستقبل (3 سنوات)";
+    else if(years == 4) grade = "الورود (4 سنوات)";
+    else if(years == 5) grade = "المرح (5 سنوات)";
+    else grade = "تأهيل للصف الأول الابتدائي (6 سنوات فما فوق)";
+
     document.getElementById("result").innerHTML=
-    "العمر: "+years+" سنة و "+months+" شهر";
+    "العمر: "+years+" سنة و "+months+" شهر<br>فصل الروضة المناسب: "+grade;
 }
 </script>
 
