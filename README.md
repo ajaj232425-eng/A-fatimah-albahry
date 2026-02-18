@@ -11,8 +11,10 @@ body{
     text-align:center;
     padding:20px;
 
-    /* خلفية بصورة كرتونية للطفل */
-    background: url('child_backpack.png') no-repeat center center fixed;
+    /* خلفية بالصورة مدمجة Base64 */
+    background-image: url("YOUR_BASE64_HERE"); /* استبدل هذا بالنص الكامل للـBase64 */
+    background-repeat: no-repeat;
+    background-position: center top;
     background-size: cover;
 }
 
@@ -22,7 +24,7 @@ body{
     padding:15px;
     border-radius:12px;
     margin-bottom:15px;
-    opacity:0.95; /* لتوضيح النص على الخلفية */
+    opacity:0.95;
 }
 
 .logo{
@@ -126,35 +128,35 @@ button:hover{
 
 <script>
 function calculateAge(){
-    const birthDate=document.getElementById("birthDate").value;
+    const birthDate = document.getElementById("birthDate").value;
     if(!birthDate){
         document.getElementById("result").innerHTML="الرجاء اختيار تاريخ الميلاد";
         return;
     }
 
-    const birth=new Date(birthDate);
-    const today=new Date();
+    const birth = new Date(birthDate);
+    const today = new Date();
 
-    let years=today.getFullYear()-birth.getFullYear();
-    let months=today.getMonth()-birth.getMonth();
+    let years = today.getFullYear() - birth.getFullYear();
+    let months = today.getMonth() - birth.getMonth();
     if(today.getDate() < birth.getDate()){
         months--;
     }
-    if(months<0){
+    if(months < 0){
         years--;
-        months+=12;
+        months += 12;
     }
 
-    // تحديد الفصل حسب العمر
-    let grade = "";
-    if(years < 3) grade = "غير مناسب للروضة بعد";
-    else if(years == 3) grade = "براعم المستقبل (3 سنوات)";
-    else if(years == 4) grade = "الورود (4 سنوات)";
-    else if(years == 5) grade = "المرح (5 سنوات)";
-    else grade = "تأهيل للصف الأول الابتدائي (6 سنوات فما فوق)";
+    // تحديد المستوى حسب العمر
+    let level = "";
+    if(years < 3) level = "غير مناسب للروضة بعد";
+    else if(years == 3) level = "المستوى الأول";
+    else if(years == 4) level = "المستوى الثاني";
+    else if(years == 5) level = "المستوى الثالث";
+    else level = "تأهيل للصف الأول الابتدائي (6 سنوات فما فوق)";
 
     document.getElementById("result").innerHTML=
-    "العمر: "+years+" سنة و "+months+" شهر<br>فصل الروضة المناسب: "+grade;
+    "العمر: " + years + " سنة و " + months + " شهر<br>المستوى المناسب: " + level;
 }
 </script>
 
