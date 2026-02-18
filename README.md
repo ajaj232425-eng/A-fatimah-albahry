@@ -1,4 +1,4 @@
-# A-fatimah-albahry <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
@@ -11,16 +11,9 @@ body{
     text-align:center;
     padding:20px;
 
-    /* خلفية تموج ألوان قوس قزح */
-    background: linear-gradient(-45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8f00ff);
-    background-size: 400% 400%;
-    animation: rainbow 15s ease infinite;
-}
-
-@keyframes rainbow {
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
+    /* خلفية بصورة كرتونية للطفل */
+    background: url('child_backpack.png') no-repeat center center fixed;
+    background-size: cover;
 }
 
 /* رأس الصفحة */
@@ -29,6 +22,7 @@ body{
     padding:15px;
     border-radius:12px;
     margin-bottom:15px;
+    opacity:0.95; /* لتوضيح النص على الخلفية */
 }
 
 .logo{
@@ -54,6 +48,7 @@ body{
     box-shadow:0 0 15px rgba(0,0,0,0.2);
     max-width:350px;
     margin:auto;
+    opacity:0.95;
 }
 
 h1{
